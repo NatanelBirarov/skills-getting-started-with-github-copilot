@@ -26,12 +26,17 @@ document.addEventListener("DOMContentLoaded", () => {
           participantsHTML = `
             <div style="margin-top:12px;">
               <strong style="color:#3949ab;">Participants:</strong>
-              <ul style="margin:8px 0 0 18px; padding:0;">
+              <ul style="margin:10px 0 0 0; padding:0;">
                 ${details.participants
-                  .map(
-                    (p) =>
-                      `<li style="margin-bottom:4px; color:#333; background:#e3eafc; border-radius:3px; padding:2px 8px; display:inline-block;">${p}</li>`
-                  )
+                  .map((p) => {
+                    const initials = p
+                      .split("@")[0]
+                      .split(/[.\-_]/)
+                      .map(part => part[0] ? part[0].toUpperCase() : "")
+                      .join("")
+                      .slice(0, 2);
+                    return `<li data-initials="${initials}">${p}</li>`;
+                  })
                   .join("")}
               </ul>
             </div>

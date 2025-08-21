@@ -72,23 +72,41 @@ section h3 {
 
 .activity-card p {
   margin-bottom: 8px;
-  
 }
 
 .activity-card ul {
-  list-style-type: disc;
-  margin-left: 20px;
-  margin-top: 8px;
+  list-style-type: none;
+  margin-left: 0;
+  margin-top: 10px;
   padding-left: 0;
 }
 
 .activity-card ul li {
-  margin-bottom: 4px;
-  color: #333;
-  background: #e3eafc;
-  border-radius: 3px;
-  padding: 2px 8px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  background: #eef2fa;
+  border-radius: 6px;
+  padding: 6px 12px;
+  color: #1a237e;
+  font-weight: 500;
+  box-shadow: 0 1px 2px rgba(26,35,126,0.04);
+}
+
+.activity-card ul li::before {
+  content: attr(data-initials);
   display: inline-block;
+  width: 28px;
+  height: 28px;
+  margin-right: 10px;
+  background: #c5cae9;
+  color: #3949ab;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 28px;
+  font-size: 15px;
+  font-weight: bold;
+  letter-spacing: 1px;
 }
 
 .form-group {
