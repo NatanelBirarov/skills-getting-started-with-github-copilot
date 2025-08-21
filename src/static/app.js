@@ -20,35 +20,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const spotsLeft = details.max_participants - details.participants.length;
 
-        // Participants section
-        let participantsHTML = "";
-        if (details.participants.length > 0) {
-          participantsHTML = `
-            <div style="margin-top:12px;">
-              <strong style="color:#3949ab;">Participants:</strong>
-              <ul style="margin:10px 0 0 0; padding:0;">
-                ${details.participants
-                  .map((p) => {
-                    const initials = p
-                      .split("@")[0]
-                      .split(/[.\-_]/)
-                      .map(part => part[0] ? part[0].toUpperCase() : "")
-                      .join("")
-                      .slice(0, 2);
-                    return `<li data-initials="${initials}">${p}</li>`;
-                  })
-                  .join("")}
-              </ul>
-            </div>
-          `;
-        } else {
-          participantsHTML = `
-            <div style="margin-top:12px;">
-              <strong style="color:#3949ab;">Participants:</strong>
-              <span style="color:#888; margin-left:6px;">No participants yet.</span>
-            </div>
-          `;
-        }
+        // Participants section (pretty bulleted list)
+        let participantsHTML = `
+          <div class="participants-section">
+            <strong>Participants:</strong>
+            ${
+              details.participants.length > 0
+                ? `<ul>
+                    ${details.participants
+                      .map(
+                        (p) =>
+                          `<li>${p}</li>`
+                      )
+                      .join("")}
+                  </ul>`
+                : `<span>No participants yet.</span>`
+            }
+          </div>
+        `;
 
         activityCard.innerHTML = `
           <h4>${name}</h4>
